@@ -513,12 +513,12 @@ export default {
         {label: 'MAX', num: 0}
       ],
       result: [
-        { id: 1, name: '1精油', amount: 0},
-        { id: 2, name: '2鎖鏈', amount: 0},
-        { id: 3, name: '3背帶', amount: 0},
-        { id: 4, name: '4短褲', amount: 0},
-        { id: 5, name: '5手套', amount: 0},
-        { id: 6, name: '6噴霧', amount: 0},
+        { id: 1, name: '精油', amount: 0},
+        { id: 2, name: '鎖鏈', amount: 0},
+        { id: 3, name: '背帶', amount: 0},
+        { id: 4, name: '短褲', amount: 0},
+        { id: 5, name: '手套', amount: 0},
+        { id: 6, name: '噴霧', amount: 0},
       ],
       columns: [
         {
