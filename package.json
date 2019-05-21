@@ -12,7 +12,8 @@
     "buefy": "^0.7.5",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "vue-cookies": "^1.5.13"
+    "vue-cookies": "^1.5.13",
+    "vue-web-storage": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",

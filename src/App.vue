@@ -1,431 +1,25 @@
 <template>
   <div class="section">
-    <div class="is-size-3">目前練度</div>
-
+    <div class="is-size-3">夢幻模擬戰 計算機</div>
     <b-tabs>
-      <b-tab-item label="步">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.a.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.a.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.a.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="壓制戰法">
-              <b-select placeholder="---" v-model="data.a.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="應急處理">
-              <b-select placeholder="---" v-model="data.a.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-        </div>
-      </b-tab-item>
-
-      <b-tab-item label="槍">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.b.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.b.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.b.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="作戰續行">
-              <b-select placeholder="---" v-model="data.b.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="反擊方陣">
-              <b-select placeholder="---" v-model="data.b.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-        </div>
-      </b-tab-item>
-
-      <b-tab-item label="騎">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.c.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.c.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.c.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="集體衝鋒">
-              <b-select placeholder="---" v-model="data.c.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="高速移動">
-              <b-select placeholder="---" v-model="data.c.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-        </div>
-      </b-tab-item>
-
-      <b-tab-item label="飛/水">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.d.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.d.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.d.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="水戰強化">
-              <b-select placeholder="---" v-model="data.d.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="特技飛行">
-              <b-select placeholder="---" v-model="data.d.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-        </div>
-      </b-tab-item>
-
-      <b-tab-item label="弓/刺">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.e.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.e.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.e.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="密林遊俠">
-              <b-select placeholder="---" v-model="data.e.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="殺戮氣息">
-              <b-select placeholder="---" v-model="data.e.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-        </div>
-      </b-tab-item>
-
-      <b-tab-item label="法/僧/魔">
-        <div class="columns">
-          <div class="column">
-            <b-field label="核攻">
-              <b-select placeholder="---" v-model="data.f.atk.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核防">
-              <b-select placeholder="---" v-model="data.f.def.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="核兵">
-              <b-select placeholder="---" v-model="data.f.hp.num">
-                <option
-                    v-for="option in items2"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="虔誠信仰">
-              <b-select placeholder="---" v-model="data.f.other1.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="聖光護佑">
-              <b-select placeholder="---" v-model="data.f.other2.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
-          </div>
-
-          <div class="column">
-            <b-field label="污穢鎧甲">
-              <b-select placeholder="---" v-model="data.f.other3.num">
-                <option
-                    v-for="option in items1"
-                    :value="option.num"
-                    :key="option.label">
-                  {{option.label}}
-                </option>
-              </b-select>
-            </b-field>
+      <b-tab-item :label="datum.label" v-for="datum in data" :key="datum.id">
+        <div class="columns is-multiline is-mobile">
+          <div class="column is-half" v-for="a in datum.data">
+            <div class="is-size-4">{{a.label}}</div>
+            <div class="columns">
+              <div class="column" v-for="value in a.data">
+                <b-field :label="value.label">
+                  <b-select placeholder="---" v-model="value.num">
+                    <option
+                        v-for="option in items2"
+                        :value="option.num"
+                        :key="option.label">
+                      {{option.label}}
+                    </option>
+                  </b-select>
+                </b-field>
+              </div>
+            </div>
           </div>
         </div>
       </b-tab-item>
@@ -435,61 +29,129 @@
     <b-button type="is-success" v-on:click="calculate">計算</b-button>
 
     <b-table :data="result" :columns="columns"></b-table>
+
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 
 export default {
   name: 'app',
   data() {
 
-    let data = $cookies.get('data');
+    let data = Vue.$localStorage.get('data');
+    let aInit = {
+      atk: {label: '核心攻擊', item1: 2, item2: 6, num: 0},
+      def: {label: '核心防禦', item1: 1, item2: 6, num: 0},
+      hp: {label: '核心生存', item1: 1, item2: 6, num: 0},
+      other1: {label: '壓制戰法', item1: 2, item2: 6, num: 0},
+      other2: {label: '應急處理', item1: 1, item2: 3, num: 0}
+    };
+
+    let bInit = {
+      atk: {label: '核心攻擊', item1: 5, item2: 4, num: 0},
+      def: {label: '核心防禦', item1: 1, item2: 4, num: 0},
+      hp: {label: '核心生存', item1: 1, item2: 4, num: 0},
+      other1: {label: '作戰續行', item1: 1, item2: 4, num: 0},
+      other2: {label: '反擊方陣', item1: 5, item2: 6, num: 0}
+    };
+
+    let cInit = {
+      atk: {label: '核心攻擊', item1: 2, item2: 3, num: 0},
+      def: {label: '核心防禦', item1: 5, item2: 3, num: 0},
+      hp: {label: '核心生存', item1: 5, item2: 3, num: 0},
+      other1: {label: '集體衝鋒', item1: 2, item2: 3, num: 0},
+      other2: {label: '高速移動', item1: 5, item2: 6, num: 0}
+    };
+
+    let dInit = {
+      atk: {label: '核心攻擊', item1: 4, item2: 1, num: 0},
+      def: {label: '核心防禦', item1: 6, item2: 1, num: 0},
+      hp: {label: '核心生存', item1: 6, item2: 1, num: 0},
+      other1: {label: '水戰強化', item1: 6, item2: 1, num: 0},
+      other2: {label: '特技飛行', item1: 4, item2: 1, num: 0}
+    };
+
+    let eInit = {
+      atk: {label: '核心攻擊', item1: 4, item2: 2, num: 0},
+      def: {label: '核心防禦', item1: 3, item2: 2, num: 0},
+      hp: {label: '核心生存', item1: 3, item2: 2, num: 0},
+      other1: {label: '密林遊俠', item1: 3, item2: 2, num: 0},
+      other2: {label: '殺戮氣息', item1: 4, item2: 5, num: 0}
+    };
+
+    let fInit = {
+      atk: {label: '核心攻擊', item1: 3, item2: 5, num: 0},
+      def: {label: '核心防禦', item1: 6, item2: 5, num: 0},
+      hp: {label: '核心生存', item1: 6, item2: 5, num: 0},
+      other1: {label: '虔誠信仰', item1: 3, item2: 2, num: 0},
+      other2: {label: '聖光護佑', item1: 6, item2: 5, num: 0},
+      other3: {label: '污穢鎧甲', item1: 3, item2: 3, num: 0}
+    };
+
     if(!data) {
       data = {
         a: {
-          atk: {item1: 2, item2: 6, num: 0},
-          def: {item1: 1, item2: 6, num: 0},
-          hp: {item1: 1, item2: 6, num: 0},
-          other1: {item1: 2, item2: 6, num: 0},
-          other2: {item1: 1, item2: 3, num: 0}
+          id: 1,
+          label: '步',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(aInit)},
+              target: {label: '目標練度', data: this.iterationCopy(aInit)
+            }
+          }
         },
         b: {
-          atk: {item1: 5, item2: 4, num: 0},
-          def: {item1: 1, item2: 4, num: 0},
-          hp: {item1: 1, item2: 4, num: 0},
-          other1: {item1: 1, item2: 4, num: 0},
-          other2: {item1: 5, item2: 6, num: 0}
+          id: 2,
+          label: '槍',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(bInit)},
+              target: {label: '目標練度', data: this.iterationCopy(bInit)
+            }
+          }
         },
         c: {
-          atk: {item1: 2, item2: 3, num: 0},
-          def: {item1: 5, item2: 3, num: 0},
-          hp: {item1: 5, item2: 3, num: 0},
-          other1: {item1: 2, item2: 3, num: 0},
-          other2: {item1: 5, item2: 6, num: 0}
+          id: 3,
+          label: '騎',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(cInit)},
+              target: {label: '目標練度', data: this.iterationCopy(cInit)
+            }
+          }
         },
         d: {
-          atk: {item1: 4, item2: 1, num: 0},
-          def: {item1: 6, item2: 1, num: 0},
-          hp: {item1: 6, item2: 1, num: 0},
-          other1: {item1: 6, item2: 1, num: 0},
-          other2: {item1: 4, item2: 1, num: 0}
+          id: 4,
+          label: '飛/水',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(dInit)},
+              target: {label: '目標練度', data: this.iterationCopy(dInit)
+            }
+          }
         },
         e: {
-          atk: {item1: 4, item2: 2, num: 0},
-          def: {item1: 3, item2: 2, num: 0},
-          hp: {item1: 3, item2: 2, num: 0},
-          other1: {item1: 3, item2: 2, num: 0},
-          other2: {item1: 4, item2: 5, num: 0}
+          id: 5,
+          label: '弓/刺',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(eInit)},
+              target: {label: '目標練度', data: this.iterationCopy(eInit)
+            }
+          }
         },
         f: {
-          atk: {item1: 3, item2: 5, num: 0},
-          def: {item1: 6, item2: 5, num: 0},
-          hp: {item1: 6, item2: 5, num: 0},
-          other1: {item1: 3, item2: 2, num: 0},
-          other2: {item1: 6, item2: 5, num: 0},
-          other3: {item1: 3, item2: 3, num: 0}
-        }
+          id: 6,
+          label: '法/僧/魔',
+          data: {
+            origin: {
+              label: '目前練度', data: this.iterationCopy(fInit)},
+              target: {label: '目標練度', data: this.iterationCopy(fInit)
+            }
+          }
+        },
       }
     }
 
@@ -519,6 +181,7 @@ export default {
         { id: 4, name: '短褲', amount: 0},
         { id: 5, name: '手套', amount: 0},
         { id: 6, name: '噴霧', amount: 0},
+        { id: 7, name: '總計', amount: 0},
       ],
       columns: [
         {
@@ -527,7 +190,7 @@ export default {
         },
         {
           field: 'amount',
-          label: '所剩材料數量',
+          label: '離目標所剩材料數量',
         }
       ]
     }
@@ -545,39 +208,46 @@ export default {
 
       let data = this.data;
 
-      this.calculate1(result, data.a);
-      this.calculate1(result, data.b);
-      this.calculate1(result, data.c);
-      this.calculate1(result, data.d);
-      this.calculate1(result, data.e);
-      this.calculate1(result, data.f);
+      this.calculate1(result, data.a.data.origin, data.a.data.target);
+      this.calculate1(result, data.b.data.origin, data.b.data.target);
+      this.calculate1(result, data.c.data.origin, data.c.data.target);
+      this.calculate1(result, data.d.data.origin, data.d.data.target);
+      this.calculate1(result, data.e.data.origin, data.e.data.target);
+      this.calculate1(result, data.f.data.origin, data.f.data.target);
 
       let result2 = this.result;
-
-      for(let i = 0; i < result2.length; i++ ) {
-          result2[i].amount = result.get(i + 1);
+      let sum = 0;
+      for(let i = 0; i < result2.length - 1; i++ ) {
+        sum += result.get(i + 1);
+        result2[i].amount = result.get(i + 1);
       }
+      result2[result2.length - 1].amount = sum;
     },
     save() {
-      $cookies.set('data', this.data, '1y');
+      Vue.$localStorage.set('data', this.data, '1y');
       this.$toast.open({
         message: '儲存成功',
         type: 'is-success'
       })
     },
-    calculate1(result, data) {
-      this.calculate2(result, data.atk);
-      this.calculate2(result, data.def);
-      this.calculate2(result, data.hp);
-      this.calculate2(result, data.other1);
-      this.calculate2(result, data.other2);
-      if(data.other3) {
-        this.calculate2(result, data.other3);
+    calculate1(result, origin, target) {
+      this.calculate2(result, origin.data.atk, target.data.atk);
+      this.calculate2(result, origin.data.def, target.data.def);
+      this.calculate2(result, origin.data.hp, target.data.hp);
+      this.calculate2(result, origin.data.other1, target.data.other1);
+      this.calculate2(result, origin.data.other2, target.data.other2);
+      if(origin.data.other3 && target.data.other3) {
+        this.calculate2(result, origin.data.other3, target.data.other3);
       }
     },
-    calculate2(result, data) {
-      result.set(data.item1, result.get(data.item1) + data.num);
-      result.set(data.item2, result.get(data.item2) + data.num);
+    calculate2(result, origin, target) {
+      let num = origin.num - target.num;
+      num = num > 0 ? num : 0;
+      result.set(origin.item1, result.get(origin.item1) + num);
+      result.set(origin.item2, result.get(origin.item2) + num);
+    },
+    iterationCopy(src) {
+      return JSON.parse(JSON.stringify(src));
     }
   }
 }
