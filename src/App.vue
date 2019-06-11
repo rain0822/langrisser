@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <div class="is-size-3">夢幻模擬戰 計算機</div>
+    <div class="is-size-3">夢幻模擬戰 兄貴材料目標計算機(v0.0.2)</div>
     <b-tabs>
       <b-tab-item :label="datum.label" v-for="datum in data" :key="datum.id">
         <div class="columns is-multiline is-mobile">
@@ -18,6 +18,28 @@
                     </option>
                   </b-select>
                 </b-field>
+                <div class="columns is-gapless">
+                  <div class="column">
+                    <figure class="image is-48x48">
+                      <figure v-if="value.item1 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                      <figure v-if="value.item1 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                      <figure v-if="value.item1 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                      <figure v-if="value.item1 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                      <figure v-if="value.item1 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                      <figure v-if="value.item1 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <figure class="image is-48x48">
+                      <figure v-if="value.item2 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                      <figure v-if="value.item2 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                      <figure v-if="value.item2 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                      <figure v-if="value.item2 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                      <figure v-if="value.item2 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                      <figure v-if="value.item2 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                    </figure>
+                  </div>
+                </div>
               </div>
             </div>
             <hr/>
@@ -33,6 +55,24 @@
                     </option>
                   </b-select>
                 </b-field>
+                <div class="columns is-gapless">
+                  <div class="column">
+                    <figure v-if="value.item1 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                    <figure v-if="value.item1 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                    <figure v-if="value.item1 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                    <figure v-if="value.item1 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                    <figure v-if="value.item1 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                    <figure v-if="value.item1 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                  </div>
+                  <div class="column">
+                    <figure v-if="value.item2 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                    <figure v-if="value.item2 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                    <figure v-if="value.item2 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                    <figure v-if="value.item2 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                    <figure v-if="value.item2 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                    <figure v-if="value.item2 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -75,6 +115,8 @@ export default {
     ];
 
     let data = Vue.$localStorage.get('data');
+    let version = Vue.$localStorage.get('version');
+
     let aInit = {
       atk: {label: '核心攻擊', item1: 2, item2: 6, num: 0, items: items2},
       def: {label: '核心防禦', item1: 1, item2: 6, num: 0, items: items2},
@@ -83,13 +125,13 @@ export default {
       other2: {label: '應急處理', item1: 1, item2: 3, num: 0, items: items1}
     };
     let aInit2 = {
-      a: {label: '重裝步兵', item1: 1, item2: 5, num: 0, items: items1},
+      a: {label: '重裝步兵', item1: 1, item2: 6, num: 0, items: items1},
       b: {label: '高地勇士', item1: 2, item2: 3, num: 0, items: items1},
       c: {label: '假面女僕', item1: 2, item2: 4, num: 0, items: items1},
       d: {label: '狂獸人', item1: 1, item2: 3, num: 0, items: items1},
-      e: {label: '狂戰士', item1: 2, item2: 5, num: 0, items: items1},
+      e: {label: '狂戰士', item1: 2, item2: 6, num: 0, items: items1},
       f: {label: '食人巨魔', item1: 2, item2: 4, num: 0, items: items1},
-      g: {label: '近衛步兵', item1: 1, item2: 5, num: 0, items: items1},
+      g: {label: '近衛步兵', item1: 1, item2: 6, num: 0, items: items1},
       h: {label: '暗黑衛隊', item1: 2, item2: 3, num: 0, items: items1}
     };
 
@@ -102,12 +144,12 @@ export default {
     };
     let bInit2 = {
       a: {label: '重裝槍兵', item1: 1, item2: 4, num: 0, items: items1},
-      b: {label: '重戟百夫長', item1: 1, item2: 5, num: 0, items: items1},
+      b: {label: '重戟百夫長', item1: 1, item2: 6, num: 0, items: items1},
       c: {label: '姬武神', item1: 1, item2: 3, num: 0, items: items1},
-      d: {label: '岩石巨人', item1: 6, item2: 5, num: 0, items: items1},
+      d: {label: '岩石巨人', item1: 5, item2: 6, num: 0, items: items1},
       e: {label: '熔岩巨人', item1: 1, item2: 3, num: 0, items: items1},
       f: {label: '近衛槍兵', item1: 1, item2: 3, num: 0, items: items1},
-      g: {label: '暗影百夫長', item1: 6, item2: 5, num: 0, items: items1}
+      g: {label: '暗影百夫長', item1: 5, item2: 6, num: 0, items: items1}
     };
 
     let cInit = {
@@ -118,14 +160,14 @@ export default {
       other2: {label: '高速移動', item1: 5, item2: 6, num: 0, items: items1}
     };
     let cInit2 = {
-      a: {label: '重裝騎兵', item1: 2, item2: 5, num: 0, items: items1},
-      b: {label: '龍騎兵', item1: 6, item2: 4, num: 0, items: items1},
-      c: {label: '骨犀', item1: 6, item2: 5, num: 0, items: items1},
+      a: {label: '重裝騎兵', item1: 2, item2: 6, num: 0, items: items1},
+      b: {label: '龍騎兵', item1: 5, item2: 4, num: 0, items: items1},
+      c: {label: '骨犀', item1: 5, item2: 6, num: 0, items: items1},
       d: {label: '聖殿騎士', item1: 2, item2: 4, num: 0, items: items1},
-      e: {label: '地獄犬', item1: 2, item2: 5, num: 0, items: items1},
-      f: {label: '近衛騎兵', item1: 2, item2: 5, num: 0, items: items1},
+      e: {label: '地獄犬', item1: 2, item2: 6, num: 0, items: items1},
+      f: {label: '近衛騎兵', item1: 2, item2: 6, num: 0, items: items1},
       g: {label: '天琴親衛', item1: 2, item2: 4, num: 0, items: items1},
-      h: {label: '皇家騎兵', item1: 6, item2: 3, num: 0, items: items1}
+      h: {label: '皇家騎兵', item1: 2, item2: 3, num: 0, items: items1}
     };
 
     let dInit = {
@@ -137,14 +179,14 @@ export default {
     };
     let dInit2 = {
       a: {label: '皇家獅鷲', item1: 4, item2: 1, num: 0, items: items1},
-      b: {label: '人魚統領', item1: 5, item2: 2, num: 0, items: items1},
-      c: {label: '蜥蜴刀客', item1: 4, item2: 6, num: 0, items: items1},
+      b: {label: '人魚統領', item1: 6, item2: 2, num: 0, items: items1},
+      c: {label: '蜥蜴刀客', item1: 4, item2: 5, num: 0, items: items1},
       d: {label: '吸血蝙蝠', item1: 4, item2: 2, num: 0, items: items1},
-      e: {label: '聖天馬', item1: 5, item2: 6, num: 0, items: items1},
+      e: {label: '聖天馬', item1: 6, item2: 5, num: 0, items: items1},
       f: {label: '龍蝦巨獸', item1: 4, item2: 2, num: 0, items: items1},
-      g: {label: '海怪', item1: 4, item2: 6, num: 0, items: items1},
-      h: {label: '天使', item1: 5, item2: 1, num: 0, items: items1},
-      i: {label: '石像鬼', item1: 5, item2: 2, num: 0, items: items1}
+      g: {label: '海怪', item1: 4, item2: 5, num: 0, items: items1},
+      h: {label: '天使', item1: 6, item2: 1, num: 0, items: items1},
+      i: {label: '石像鬼', item1: 6, item2: 2, num: 0, items: items1}
     };
 
     let eInit = {
@@ -159,13 +201,13 @@ export default {
       b: {label: '大精靈', item1: 4, item2: 2, num: 0, items: items1},
       c: {label: '暗精靈射手', item1: 4, item2: 1, num: 0, items: items1},
       d: {label: '投石車', item1: 4, item2: 1, num: 0, items: items1},
-      e: {label: '暗殺者', item1: 3, item2: 6, num: 0, items: items1},
+      e: {label: '暗殺者', item1: 3, item2: 5, num: 0, items: items1},
       f: {label: '突襲弩騎兵', item1: 4, item2: 1, num: 0, items: items1},
       g: {label: '緋霧女侍', item1: 3, item2: 1, num: 0, items: items1},
-      h: {label: '旋風遊騎兵', item1: 4, item2: 6, num: 0, items: items1},
-      i: {label: '武士', item1: 3, item2: 6, num: 0, items: items1},
+      h: {label: '旋風遊騎兵', item1: 4, item2: 5, num: 0, items: items1},
+      i: {label: '武士', item1: 3, item2: 5, num: 0, items: items1},
       j: {label: '火弩狙擊手', item1: 4, item2: 1, num: 0, items: items1},
-      k: {label: '影侍', item1: 4, item2: 6, num: 0, items: items1}
+      k: {label: '影侍', item1: 4, item2: 5, num: 0, items: items1}
     };
 
     let fInit = {
@@ -174,22 +216,21 @@ export default {
       hp: {label: '核心生存', item1: 6, item2: 5, num: 0, items: items2},
       other1: {label: '虔誠信仰', item1: 3, item2: 2, num: 0, items: items1},
       other2: {label: '聖光護佑', item1: 6, item2: 5, num: 0, items: items1},
-      other3: {label: '污穢鎧甲', item1: 3, item2: 3, num: 0, items: items1}
+      other3: {label: '污穢鎧甲', item1: 3, item2: 1, num: 0, items: items1}
     };
     let fInit2 = {
-      a: {label: '神官', item1: 5, item2: 6, num: 0, items: items1},
+      a: {label: '神官', item1: 6, item2: 5, num: 0, items: items1},
       b: {label: '神官騎士', item1: 3, item2: 2, num: 0, items: items1},
       c: {label: '狂熱者', item1: 3, item2: 1, num: 0, items: items1},
       d: {label: '重裝骷髏', item1: 3, item2: 2, num: 0, items: items1},
-      e: {label: '驅魔師', item1: 3, item2: 6, num: 0, items: items1},
-      f: {label: '火焰骷髏弓手', item1: 5, item2: 2, num: 0, items: items1},
+      e: {label: '驅魔師', item1: 3, item2: 5, num: 0, items: items1},
+      f: {label: '火焰骷髏弓手', item1: 6, item2: 2, num: 0, items: items1},
       g: {label: '男巫', item1: 3, item2: 1, num: 0, items: items1},
-      h: {label: '魔女', item1: 3, item2: 6, num: 0, items: items1},
+      h: {label: '魔女', item1: 3, item2: 5, num: 0, items: items1},
       i: {label: '巫女', item1: 3, item2: 2, num: 0, items: items1},
-      j: {label: '死靈騎士', item1: 5, item2: 6, num: 0, items: items1}
+      j: {label: '死靈騎士', item1: 6, item2: 5, num: 0, items: items1}
     };
-
-    if(!data) {
+    if(!data || version !== '0.0.2') {
       data = {
         a: {
           id: 1,
@@ -345,6 +386,7 @@ export default {
     },
     save() {
       Vue.$localStorage.set('data', this.data, '1y');
+      Vue.$localStorage.set('version', '0.0.2', '1y');
       this.$toast.open({
         message: '儲存成功',
         type: 'is-success'
