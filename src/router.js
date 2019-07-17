@@ -12,13 +12,13 @@ Vue.use(VueRouter);
 export default new VueRouter({
   mode: 'history',
   routes: [{
-    path: '/',
+    path: '/langrisser/',
     component: Home
   },{
-    path: '/calculation',
+    path: '/langrisser/calculation',
     component: Calculation
   },{
-    path: '/main2',
+    path: '/langrisser/main2',
     component: Main2,
     children: [
       {
