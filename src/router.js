@@ -10,15 +10,14 @@ import Main2Level2 from './views/main2/level2.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: 'history',
   routes: [{
-    path: '/langrisser/',
+    path: '/',
     component: Home
   },{
-    path: '/langrisser/calculation',
+    path: '/calculation',
     component: Calculation
   },{
-    path: '/langrisser/main2',
+    path: '/main2',
     component: Main2,
     children: [
       {
