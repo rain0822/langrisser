@@ -80,6 +80,16 @@
       </b-tab-item>
     </b-tabs>
 
+    <div class="is-size-4">庫存數量</div>
+    <div class="columns">
+      <div class="column" v-for="re in result" v-if="re.name !== '總計'">
+        <b-field :label="re.name">
+          <b-input placeholder="0" type="number" v-model="re.inventory">
+          </b-input>
+        </b-field>
+      </div>
+    </div>
+
     <b-button type="is-info" v-on:click="save">儲存</b-button>
     <b-button type="is-success" v-on:click="calculate">計算</b-button>
 
@@ -326,7 +336,7 @@
                 data2: this.iterationCopy(fInit2)
               }
             }
-          },
+          }
         }
       }
 
@@ -335,13 +345,13 @@
         items1: items1,
         items2: items2,
         result: [
-          { id: 1, name: '精油', amount: 0},
-          { id: 2, name: '鎖鏈', amount: 0},
-          { id: 3, name: '背帶', amount: 0},
-          { id: 4, name: '短褲', amount: 0},
-          { id: 5, name: '手套', amount: 0},
-          { id: 6, name: '噴霧', amount: 0},
-          { id: 7, name: '總計', amount: 0},
+          { id: 1, name: '精油', inventory: 0, amount: 0, total: 0},
+          { id: 2, name: '鎖鏈', inventory: 0, amount: 0, total: 0},
+          { id: 3, name: '背帶', inventory: 0, amount: 0, total: 0},
+          { id: 4, name: '短褲', inventory: 0, amount: 0, total: 0},
+          { id: 5, name: '手套', inventory: 0, amount: 0, total: 0},
+          { id: 6, name: '噴霧', inventory: 0, amount: 0, total: 0},
+          { id: 7, name: '總計', inventory: 0, amount: 0, total: 0},
         ],
         columns: [
           {
@@ -349,7 +359,11 @@
             label: '材料名稱'
           },
           {
-            field: 'amount',
+            field: 'inventory',
+            label: '庫存數量',
+          },
+          {
+            field: 'total',
             label: '離目標所剩材料數量',
           }
         ]
@@ -376,12 +390,16 @@
         this.calculate1(result, data.f.data.origin, data.f.data.target);
 
         let result2 = this.result;
-        let sum = 0;
-        for(let i = 0; i < result2.length - 1; i++ ) {
-          sum += result.get(i + 1);
+        let sum1 = 0;
+        let sum2 = 0;
+        for (let i = 0; i < result2.length - 1; i++) {
           result2[i].amount = result.get(i + 1);
+          result2[i].total = result2[i].amount - result2[i].inventory;
+          sum2 += parseInt(result2[i].total);
+          sum1 += parseInt(result2[i].inventory);
         }
-        result2[result2.length - 1].amount = sum;
+        result2[result2.length - 1].total = sum2;
+        result2[result2.length - 1].inventory = sum1;
       },
       save() {
         Vue.$localStorage.set('data', this.data, '1y');
