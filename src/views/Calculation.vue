@@ -1,13 +1,50 @@
 <template>
   <div>
-    <div class="is-size-3">夢幻模擬戰 兄貴材料目標計算機(v0.0.2)</div>
+    <div class="is-size-3">夢幻模擬戰 兄貴材料目標計算機(v2.0.0)</div>
     <b-tabs>
       <b-tab-item :label="datum.label" v-for="datum in data" :key="datum.id">
         <div class="columns is-multiline is-mobile">
           <div class="column is-half" :class="[a.label === '目前練度' ? '' : 'has-background-warning']" v-for="a in datum.data" :key="a.label">
             <div class="is-size-4">{{a.label}}</div>
-            <div class="columns">
-              <div class="column" v-for="value in a.data">
+            <div class="columns is-multiline">
+              <div class="column is-one-quarter" v-for="value in a.data">
+                <b-field :label="value.label">
+                  <b-select placeholder="---" v-model="value.num">
+                    <option
+                        v-for="option in value.items"
+                        :value="option.num"
+                        :key="option.label">
+                      {{option.label}}
+                    </option>
+                  </b-select>
+                </b-field>
+                <div class="columns is-gapless">
+                  <div class="column">
+                    <figure class="image is-48x48">
+                      <figure v-if="value.item1 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                      <figure v-if="value.item1 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                      <figure v-if="value.item1 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                      <figure v-if="value.item1 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                      <figure v-if="value.item1 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                      <figure v-if="value.item1 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <figure class="image is-48x48">
+                      <figure v-if="value.item2 === 1" class="image is-48x48"><img src="1.gif"></figure>
+                      <figure v-if="value.item2 === 2" class="image is-48x48"><img src="2.gif"></figure>
+                      <figure v-if="value.item2 === 3" class="image is-48x48"><img src="3.gif"></figure>
+                      <figure v-if="value.item2 === 4" class="image is-48x48"><img src="4.gif"></figure>
+                      <figure v-if="value.item2 === 5" class="image is-48x48"><img src="5.gif"></figure>
+                      <figure v-if="value.item2 === 6" class="image is-48x48"><img src="6.gif"></figure>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <div class="columns is-multiline">
+              <div class="column is-one-quarter" v-for="value in a.data3">
                 <b-field :label="value.label">
                   <b-select placeholder="---" v-model="value.num">
                     <option
@@ -123,6 +160,17 @@
         {label: 'MAX', num: 0}
       ];
 
+      let items3 = [
+        {label: 3, num: 35},
+        {label: 4, num: 33},
+        {label: 5, num: 30},
+        {label: 6, num: 26},
+        {label: 7, num: 21},
+        {label: 8, num: 15},
+        {label: 9, num: 8},
+        {label: 'MAX', num: 0}
+      ];
+
       let data = Vue.$localStorage.get('data');
       let version = Vue.$localStorage.get('version');
 
@@ -141,7 +189,16 @@
         e: {label: '狂戰士', item1: 2, item2: 6, num: 0, items: items1},
         f: {label: '食人巨魔', item1: 2, item2: 4, num: 0, items: items1},
         g: {label: '近衛步兵', item1: 1, item2: 6, num: 0, items: items1},
-        h: {label: '暗黑衛隊', item1: 2, item2: 3, num: 0, items: items1}
+        h: {label: '暗黑衛隊', item1: 2, item2: 3, num: 0, items: items1},
+        i: {label: '素體改造者', item1: 1, item2: 4, num: 0, items: items1}
+      };
+
+      let aInit3 = {
+        atk: {label: '聯合攻擊', item1: 2, item2: 6, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 1, item2: 6, num: 0, items: items3},
+        hp: {label: '聯合生命', item1: 2, item2: 6, num: 0, items: items3},
+        other1: {label: '防空重甲', item1: 2, item2: 3, num: 0, items: items3},
+        other2: {label: '孤軍奮戰', item1: 1, item2: 4, num: 0, items: items3}
       };
 
       let bInit = {
@@ -158,7 +215,16 @@
         d: {label: '岩石巨人', item1: 5, item2: 6, num: 0, items: items1},
         e: {label: '熔岩巨人', item1: 1, item2: 3, num: 0, items: items1},
         f: {label: '近衛槍兵', item1: 1, item2: 3, num: 0, items: items1},
-        g: {label: '暗影百夫長', item1: 5, item2: 6, num: 0, items: items1}
+        g: {label: '暗影百夫長', item1: 5, item2: 6, num: 0, items: items1},
+        h: {label: '水晶塑型者', item1: 5, item2: 6, num: 0, items: items1}
+      };
+
+      let bInit3 = {
+        atk: {label: '聯合攻擊', item1: 1, item2: 4, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 5, item2: 4, num: 0, items: items3},
+        hp: {label: '聯合生命', item1: 1, item2: 4, num: 0, items: items3},
+        other1: {label: '鞏固防線', item1: 1, item2: 3, num: 0, items: items3},
+        other2: {label: '浴血奮戰', item1: 5, item2: 6, num: 0, items: items3}
       };
 
       let cInit = {
@@ -176,7 +242,15 @@
         e: {label: '地獄犬', item1: 2, item2: 6, num: 0, items: items1},
         f: {label: '近衛騎兵', item1: 2, item2: 6, num: 0, items: items1},
         g: {label: '天琴親衛', item1: 2, item2: 4, num: 0, items: items1},
-        h: {label: '皇家騎兵', item1: 2, item2: 3, num: 0, items: items1}
+        h: {label: '皇家騎兵', item1: 2, item2: 3, num: 0, items: items1},
+        i: {label: '獨角獸', item1: 2, item2: 6, num: 0, items: items1}
+      };
+      let cInit3 = {
+        atk: {label: '聯合攻擊', item1: 5, item2: 3, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 2, item2: 3, num: 0, items: items3},
+        hp: {label: '聯合生存', item1: 5, item2: 3, num: 0, items: items3},
+        other1: {label: '精鋼鐵蹄', item1: 2, item2: 6, num: 0, items: items3},
+        other2: {label: '奔襲破陣', item1: 5, item2: 4, num: 0, items: items3}
       };
 
       let dInit = {
@@ -195,7 +269,15 @@
         f: {label: '龍蝦巨獸', item1: 4, item2: 2, num: 0, items: items1},
         g: {label: '海怪', item1: 4, item2: 5, num: 0, items: items1},
         h: {label: '天使', item1: 6, item2: 1, num: 0, items: items1},
-        i: {label: '石像鬼', item1: 6, item2: 2, num: 0, items: items1}
+        i: {label: '石像鬼', item1: 6, item2: 2, num: 0, items: items1},
+        j: {label: '鋼翼勇士', item1: 5, item2: 4, num: 0, items: items1}
+      };
+      let dInit3 = {
+        atk: {label: '聯合攻擊', item1: 1, item2: 4, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 1, item2: 6, num: 0, items: items3},
+        hp: {label: '聯合生存', item1: 1, item2: 4, num: 0, items: items3},
+        other1: {label: '水靈加護', item1: 2, item2: 6, num: 0, items: items3},
+        other2: {label: '地空協同', item1: 5, item2: 4, num: 0, items: items3}
       };
 
       let eInit = {
@@ -216,7 +298,15 @@
         h: {label: '旋風遊騎兵', item1: 4, item2: 5, num: 0, items: items1},
         i: {label: '武士', item1: 3, item2: 5, num: 0, items: items1},
         j: {label: '火弩狙擊手', item1: 4, item2: 1, num: 0, items: items1},
-        k: {label: '影侍', item1: 4, item2: 5, num: 0, items: items1}
+        k: {label: '影侍', item1: 4, item2: 5, num: 0, items: items1},
+        l: {label: '地精騎士', item1: 1, item2: 4, num: 0, items: items1}
+      };
+      let eInit3 = {
+        atk: {label: '聯合攻擊', item1: 2, item2: 3, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 2, item2: 4, num: 0, items: items3},
+        hp: {label: '聯合生存', item1: 2, item2: 3, num: 0, items: items3},
+        other1: {label: '對法特訓', item1: 1, item2: 4, num: 0, items: items3},
+        other2: {label: '閃轉騰挪', item1: 5, item2: 3, num: 0, items: items3}
       };
 
       let fInit = {
@@ -237,9 +327,19 @@
         g: {label: '男巫', item1: 3, item2: 1, num: 0, items: items1},
         h: {label: '魔女', item1: 3, item2: 5, num: 0, items: items1},
         i: {label: '巫女', item1: 3, item2: 2, num: 0, items: items1},
-        j: {label: '死靈騎士', item1: 6, item2: 5, num: 0, items: items1}
+        j: {label: '死靈騎士', item1: 6, item2: 5, num: 0, items: items1},
+        k: {label: '蛛魔精靈', item1: 2, item2: 6, num: 0, items: items1}
       };
-      if(!data || version !== '0.0.2') {
+      let fInit3 = {
+        atk: {label: '聯合攻擊', item1: 5, item2: 6, num: 0, items: items3},
+        def: {label: '聯合防禦', item1: 5, item2: 3, num: 0, items: items3},
+        hp: {label: '聯合生存', item1: 5, item2: 6, num: 0, items: items3},
+        other1: {label: '聚精會神', item1: 2, item2: 6, num: 0, items: items3},
+        other2: {label: '暗黑力量', item1: 1, item2: 3, num: 0, items: items3},
+        other3: {label: '袪除不純', item1: 1, item2: 3, num: 0, items: items3}
+      };
+
+      if(!data || version !== '2.0.0') {
         data = {
           a: {
             id: 1,
@@ -248,12 +348,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(aInit),
-                data2: this.iterationCopy(aInit2)
+                data2: this.iterationCopy(aInit2),
+                data3: this.iterationCopy(aInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(aInit),
-                data2: this.iterationCopy(aInit2)
+                data2: this.iterationCopy(aInit2),
+                data3: this.iterationCopy(aInit3)
               }
             }
           },
@@ -264,12 +366,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(bInit),
-                data2: this.iterationCopy(bInit2)
+                data2: this.iterationCopy(bInit2),
+                data3: this.iterationCopy(bInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(bInit),
-                data2: this.iterationCopy(bInit2)
+                data2: this.iterationCopy(bInit2),
+                data3: this.iterationCopy(bInit3)
               }
             }
           },
@@ -280,12 +384,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(cInit),
-                data2: this.iterationCopy(cInit2)
+                data2: this.iterationCopy(cInit2),
+                data3: this.iterationCopy(cInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(cInit),
-                data2: this.iterationCopy(cInit2)
+                data2: this.iterationCopy(cInit2),
+                data3: this.iterationCopy(cInit3)
               }
             }
           },
@@ -296,12 +402,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(dInit),
-                data2: this.iterationCopy(dInit2)
+                data2: this.iterationCopy(dInit2),
+                data3: this.iterationCopy(dInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(dInit),
-                data2: this.iterationCopy(dInit2)
+                data2: this.iterationCopy(dInit2),
+                data3: this.iterationCopy(dInit3)
               }
             }
           },
@@ -312,12 +420,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(eInit),
-                data2: this.iterationCopy(eInit2)
+                data2: this.iterationCopy(eInit2),
+                data3: this.iterationCopy(eInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(eInit),
-                data2: this.iterationCopy(eInit2)
+                data2: this.iterationCopy(eInit2),
+                data3: this.iterationCopy(eInit3)
               }
             }
           },
@@ -328,12 +438,14 @@
               origin: {
                 label: '目前練度',
                 data: this.iterationCopy(fInit),
-                data2: this.iterationCopy(fInit2)
+                data2: this.iterationCopy(fInit2),
+                data3: this.iterationCopy(fInit3)
               },
               target: {
                 label: '目標練度',
                 data: this.iterationCopy(fInit),
-                data2: this.iterationCopy(fInit2)
+                data2: this.iterationCopy(fInit2),
+                data3: this.iterationCopy(fInit3)
               }
             }
           }

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.443.0",
-    "buefy": "^0.7.10",
+    "buefy": "^0.8.2",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-cookies": "^1.5.13",
