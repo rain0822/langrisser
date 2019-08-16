@@ -542,7 +542,7 @@
         if(origin.data2.i && target.data2.i) this.calculate2(result, origin.data2.i, target.data2.i);
         if(origin.data2.j && target.data2.j) this.calculate2(result, origin.data2.j, target.data2.j);
         if(origin.data2.k && target.data2.k) this.calculate2(result, origin.data2.k, target.data2.k);
-        if(origin.data2.lk && target.data2.l) this.calculate2(result, origin.data2.l, target.data2.l);
+        if(origin.data2.l && target.data2.l) this.calculate2(result, origin.data2.l, target.data2.l);
 
         this.calculate2(result, origin.data3.atk, target.data3.atk);
         this.calculate2(result, origin.data3.def, target.data3.def);
