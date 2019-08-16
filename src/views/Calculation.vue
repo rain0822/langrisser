@@ -136,6 +136,7 @@
 
 <script>
   import Vue from 'vue';
+  import { ToastProgrammatic as Toast } from 'buefy'
 
   export default {
     name: 'app',
@@ -516,7 +517,7 @@
       save() {
         Vue.$localStorage.set('data', this.data, '1y');
         Vue.$localStorage.set('version', '2.0.0', '1y');
-        this.$toast.open({
+        Toast.open({
           message: '儲存成功',
           type: 'is-success'
         })
