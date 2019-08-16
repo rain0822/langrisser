@@ -542,6 +542,14 @@
         if(origin.data2.i && target.data2.i) this.calculate2(result, origin.data2.i, target.data2.i);
         if(origin.data2.j && target.data2.j) this.calculate2(result, origin.data2.j, target.data2.j);
         if(origin.data2.k && target.data2.k) this.calculate2(result, origin.data2.k, target.data2.k);
+
+        this.calculate2(result, origin.data3.atk, target.data3.atk);
+        this.calculate2(result, origin.data3.def, target.data3.def);
+        this.calculate2(result, origin.data3.hp, target.data3.hp);
+        this.calculate2(result, origin.data3.other1, target.data3.other1);
+        this.calculate2(result, origin.data3.other2, target.data3.other2);
+        if(origin.data3.other3 && target.data3.other3) this.calculate2(result, origin.data3.other3, target.data3.other3);
+
       },
       calculate2(result, origin, target) {
         let num = origin.num - target.num;
